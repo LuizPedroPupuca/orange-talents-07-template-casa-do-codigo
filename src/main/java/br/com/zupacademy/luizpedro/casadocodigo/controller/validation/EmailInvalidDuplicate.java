@@ -1,4 +1,4 @@
-package br.com.zupacademy.luizpedro.casadocodigo.controller;
+package br.com.zupacademy.luizpedro.casadocodigo.controller.validation;
 
 import br.com.zupacademy.luizpedro.casadocodigo.dto.AutorRequest;
 import br.com.zupacademy.luizpedro.casadocodigo.model.Autor;
@@ -11,13 +11,14 @@ import org.springframework.validation.Validator;
 import java.util.Optional;
 
 @Component
-public class InvalidDuplicate implements Validator {
+public class EmailInvalidDuplicate implements Validator {
 
     @Autowired
     private AutorRepository autorRepository;
 
     @Override
     public boolean supports(Class<?> aClass) {
+
         return AutorRequest.class.isAssignableFrom(aClass);
     }
 
