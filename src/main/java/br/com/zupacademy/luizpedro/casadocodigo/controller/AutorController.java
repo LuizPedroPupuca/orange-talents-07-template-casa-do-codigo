@@ -5,6 +5,7 @@ import br.com.zupacademy.luizpedro.casadocodigo.dto.AutorRequest;
 import br.com.zupacademy.luizpedro.casadocodigo.model.Autor;
 import br.com.zupacademy.luizpedro.casadocodigo.repository.AutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -17,6 +18,13 @@ public class AutorController {
 
     @Autowired
     private AutorRepository autorRepository;
+    @Autowired
+    private InvalidDuplicate invalidDuplicate;
+
+    @InitBinder
+    public void init(WebDataBinder binder){
+        binder.addValidators(invalidDuplicate);
+    }
 
     @PostMapping
     @Transactional

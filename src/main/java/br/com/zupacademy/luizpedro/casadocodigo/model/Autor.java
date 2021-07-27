@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @Entity
 public class Autor {
 
+    @Deprecated
     public Autor(){ }
 
     public Autor(AutorRequest cadastraAutorDto){
