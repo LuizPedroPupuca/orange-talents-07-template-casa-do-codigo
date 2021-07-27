@@ -30,10 +30,10 @@ public class AutorController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<?> cadastra (@RequestBody @Valid AutorRequest autorRequest){
+    public void cadastra (@RequestBody @Valid AutorRequest autorRequest){
         Autor autor = autorRequest.converte(autorRequest);
         autorRepository.save(autor);
-        return ResponseEntity.ok().build();
+
     }
 
 }
