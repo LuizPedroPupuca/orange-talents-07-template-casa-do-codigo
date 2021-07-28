@@ -18,14 +18,6 @@ public class CategoriaController {
 
     @Autowired
     private CategoriaRepository categoriaRepository;
-    @Autowired
-    private NomeInvalidDuplicate nomeInvalidDuplicate;
-
-    @InitBinder
-    public void init(WebDataBinder binder){
-
-        binder.addValidators(nomeInvalidDuplicate);
-    }
 
     @PostMapping
     @Transactional

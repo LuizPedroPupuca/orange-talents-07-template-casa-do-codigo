@@ -19,19 +19,11 @@ public class AutorController {
 
     @Autowired
     private AutorRepository autorRepository;
-    @Autowired
-    private EmailInvalidDuplicate emailInvalidDuplicate;
-
-    @InitBinder
-    public void init(WebDataBinder binder){
-
-        binder.addValidators(emailInvalidDuplicate);
-    }
 
     @PostMapping
     @Transactional
     public void cadastra (@RequestBody @Valid AutorRequest autorRequest){
-        Autor autor = autorRequest.converte(autorRequest);
+        Autor autor = autorRequest.toModel();
         autorRepository.save(autor);
 
     }

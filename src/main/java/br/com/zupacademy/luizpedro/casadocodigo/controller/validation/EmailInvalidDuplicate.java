@@ -18,7 +18,6 @@ public class EmailInvalidDuplicate implements Validator {
 
     @Override
     public boolean supports(Class<?> aClass) {
-
         return AutorRequest.class.isAssignableFrom(aClass);
     }
 

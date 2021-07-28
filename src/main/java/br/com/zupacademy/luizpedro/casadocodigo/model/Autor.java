@@ -20,14 +20,11 @@ public class Autor {
     public Autor(){ }
 
 
-    public Autor(AutorRequest cadastraAutorDto){
-        this.email = cadastraAutorDto.getEmail();
-        this.nome = cadastraAutorDto.getNome();
-        this.descricao = cadastraAutorDto.getDescricao();
+    public Autor(String email, String nome, String descricao) {
+        this.email = email;
+        this.nome = nome;
+        this.descricao = descricao;
     }
-
-
-
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

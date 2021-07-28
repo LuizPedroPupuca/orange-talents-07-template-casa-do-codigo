@@ -1,7 +1,9 @@
 package br.com.zupacademy.luizpedro.casadocodigo.dto;
 
 
+import br.com.zupacademy.luizpedro.casadocodigo.controller.validation.UniqueValue;
 import br.com.zupacademy.luizpedro.casadocodigo.model.Autor;
+import br.com.zupacademy.luizpedro.casadocodigo.model.Categoria;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
@@ -10,9 +12,7 @@ import javax.validation.constraints.NotEmpty;
 
 
 public class AutorRequest {
-
-
-    @NotBlank @Email
+    @NotBlank @Email @NotBlank @UniqueValue(domainClass = Autor.class, fieldName = "email")
     String email;
 
     @NotBlank
@@ -33,7 +33,7 @@ public class AutorRequest {
         return descricao;
     }
 
-    public Autor converte(AutorRequest autorRequest){
-        return new Autor(autorRequest);
+    public Autor toModel(){
+        return new Autor(this.email, this.nome, this.descricao);
     }
 }
