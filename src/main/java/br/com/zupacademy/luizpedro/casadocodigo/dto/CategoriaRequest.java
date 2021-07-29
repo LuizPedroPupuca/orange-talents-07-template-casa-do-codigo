@@ -9,15 +9,14 @@ import javax.validation.constraints.NotBlank;
 public class CategoriaRequest {
 
     @NotBlank @UniqueValue(domainClass = Categoria.class, fieldName = "nome")
-    String nome;
+    private String nome;
 
     public String getNome() {
         return nome;
     }
 
+    public Categoria toModel(){
 
-
-    public Categoria converte(CategoriaRequest categoriaRequest){
-        return new Categoria(categoriaRequest);
+        return new Categoria(this.nome);
     }
 }

@@ -4,14 +4,12 @@ package br.com.zupacademy.luizpedro.casadocodigo.model;
 import br.com.zupacademy.luizpedro.casadocodigo.dto.AutorRequest;
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class Autor {
@@ -41,24 +39,5 @@ public class Autor {
     @NotBlank @Length(max = 400)
     private String descricao;
 
-    public Long getId() {
-        return id;
-    }
-
-    public LocalDateTime getData() {
-        return data;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
 }
 

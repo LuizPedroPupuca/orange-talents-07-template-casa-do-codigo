@@ -13,24 +13,22 @@ import javax.validation.constraints.NotEmpty;
 
 public class AutorRequest {
     @NotBlank @Email @NotBlank @UniqueValue(domainClass = Autor.class, fieldName = "email")
-    String email;
+    private String email;
 
     @NotBlank
-    String nome;
+    private String nome;
 
     @NotBlank @Length(max = 400)
-    String descricao;
+    private String descricao;
+
+    public AutorRequest(String email, String nome, String descricao) {
+        this.email = email;
+        this.nome = nome;
+        this.descricao = descricao;
+    }
 
     public String getEmail() {
         return email;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public String getDescricao() {
-        return descricao;
     }
 
     public Autor toModel(){
