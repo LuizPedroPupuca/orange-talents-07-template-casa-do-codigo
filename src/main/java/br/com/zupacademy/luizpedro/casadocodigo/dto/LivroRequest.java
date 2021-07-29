@@ -1,5 +1,6 @@
 package br.com.zupacademy.luizpedro.casadocodigo.dto;
 
+import br.com.zupacademy.luizpedro.casadocodigo.controller.validation.ExistId;
 import br.com.zupacademy.luizpedro.casadocodigo.controller.validation.UniqueValue;
 import br.com.zupacademy.luizpedro.casadocodigo.model.Autor;
 import br.com.zupacademy.luizpedro.casadocodigo.model.Categoria;
@@ -34,10 +35,10 @@ public class LivroRequest {
     @UniqueValue(domainClass = Livro.class, fieldName = "isbn")
     private String isbn;
 
-    @NotNull
+    @NotNull @ExistId(domainClass = Categoria.class, fieldName = "id")
     private Long idCategoria;
 
-    @NotNull
+    @NotNull @ExistId(domainClass = Categoria.class, fieldName = "id")
     private Long idAutor;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")

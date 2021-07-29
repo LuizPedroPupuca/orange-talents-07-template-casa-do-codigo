@@ -16,9 +16,9 @@ public class CategoriaController {
 
     @PostMapping
     @Transactional
-    public Categoria cadastra(@RequestBody @Valid CategoriaRequest categoriaRequest){
+    public void cadastra(@RequestBody @Valid CategoriaRequest categoriaRequest){
         Categoria categoria = categoriaRequest.toModel();
-        return categoriaRepository.save(categoria);
+        categoriaRepository.save(categoria);
     }
 
 }

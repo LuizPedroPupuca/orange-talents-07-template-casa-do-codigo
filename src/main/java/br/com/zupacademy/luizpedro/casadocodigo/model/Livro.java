@@ -9,23 +9,23 @@ import java.util.Optional;
 @Entity
 public class Livro {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
     @Column(unique = true)
-    String titulo;
-    String resumo;
-    String sumario;
-    BigDecimal preco;
-    Integer npaginas;
+    private String titulo;
+    private String resumo;
+    private String sumario;
+    private BigDecimal preco;
+    private Integer npaginas;
     @Column(unique = true)
-    String isbn;
+    private String isbn;
 
-    LocalDate dataPublicacao;
+    private LocalDate dataPublicacao;
 
     @ManyToOne
-    Categoria categoria;
+    private Categoria categoria;
 
     @ManyToOne
-    Autor autor;
+    private Autor autor;
 
     @Deprecated
     public Livro(){}
@@ -41,4 +41,11 @@ public class Livro {
         this.autor = autor;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
 }
