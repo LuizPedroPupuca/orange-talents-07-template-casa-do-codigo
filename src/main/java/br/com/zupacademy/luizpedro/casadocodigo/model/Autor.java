@@ -39,5 +39,20 @@ public class Autor {
     @NotBlank @Length(max = 400)
     private String descricao;
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
 }
 

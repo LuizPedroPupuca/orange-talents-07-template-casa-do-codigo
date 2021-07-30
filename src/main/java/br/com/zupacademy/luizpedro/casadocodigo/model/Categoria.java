@@ -22,4 +22,11 @@ public class Categoria {
     @NotBlank @Column(unique = true)
     private String nome;
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
 }

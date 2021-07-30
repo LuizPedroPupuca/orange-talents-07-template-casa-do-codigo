@@ -5,9 +5,9 @@ import br.com.zupacademy.luizpedro.casadocodigo.model.Livro;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LivroResponse {
+public class LivroResponseLista {
 
-    public LivroResponse(Livro livro) {
+    public LivroResponseLista(Livro livro) {
         this.id = livro.getId();
         this.titulo = livro.getTitulo();
     }
@@ -24,7 +24,7 @@ public class LivroResponse {
         return titulo;
     }
 
-    public static List<LivroResponse> toModel(List<Livro> livros){
-        return livros.stream().map(LivroResponse::new).collect(Collectors.toList());
+    public static List<LivroResponseLista> toModel(List<Livro> livros){
+        return livros.stream().map(LivroResponseLista::new).collect(Collectors.toList());
     }
 }
