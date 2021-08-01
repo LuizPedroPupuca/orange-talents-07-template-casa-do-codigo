@@ -10,6 +10,7 @@ import br.com.zupacademy.luizpedro.casadocodigo.repository.CategoriaRepository;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.Lob;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -23,6 +24,7 @@ public class LivroRequest {
     @NotBlank @Size(max = 500)
     private String resumo;
 
+    @Lob
     private String sumario;
 
     @NotNull @Min(value = 20)

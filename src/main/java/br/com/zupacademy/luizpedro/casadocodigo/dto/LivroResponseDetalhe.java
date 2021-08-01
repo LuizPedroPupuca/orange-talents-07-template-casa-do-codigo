@@ -17,27 +17,19 @@ public class LivroResponseDetalhe {
     private BigDecimal preco;
     private Integer npaginas;
     private String isbn;
-    private String nomeAutor;
-    private String emailAutor;
-    private String descricaoAutor;
-    private String nomeCategoria;
+    private String  autor;
 
 
-
-    public LivroResponseDetalhe(Livro livro, String nomeAutor, String emailAutor,
-                                String descricaoAutor, String nomeCategoria) {
+     public LivroResponseDetalhe(Livro livro) {
         this.titulo = livro.getTitulo();
         this.resumo = livro.getResumo();
         this.sumario = livro.getSumario();
         this.preco = livro.getPreco();
         this.npaginas = livro.getNpaginas();
         this.isbn = livro.getIsbn();
-        this.nomeAutor = nomeAutor;
-        this.emailAutor = emailAutor;
-        this.descricaoAutor = descricaoAutor;
-        this.nomeCategoria = nomeCategoria;
+        this.autor = livro.getAutor().getNome();
 
-    }
+     }
 
     public String getTitulo() {
         return titulo;
@@ -63,33 +55,7 @@ public class LivroResponseDetalhe {
         return isbn;
     }
 
-    public String getNomeAutor() {
-        return nomeAutor;
-    }
-
-    public String getEmailAutor() {
-        return emailAutor;
-    }
-
-    public String getDescricaoAutor() {
-        return descricaoAutor;
-    }
-
-    public String getNomeCategoria() {
-        return nomeCategoria;
-    }
-
-    public static LivroResponseDetalhe toModel(Livro livro, CategoriaRepository categoriaRepository,
-                                               AutorRepository autorRepository) {
-        Long idCategoria = livro.getCategoria().getId();
-        Optional<Categoria> categoriaOptional = categoriaRepository.findById(idCategoria);
-        Categoria categoria = categoriaOptional.get();
-
-        Long idAutor = livro.getAutor().getId();
-        Optional<Autor> autorOptional = autorRepository.findById(idAutor);
-        Autor autor = autorOptional.get();
-
-        return new LivroResponseDetalhe(livro, autor.getNome(),autor.getEmail(), autor.getDescricao(),
-                categoria.getNome());
+    public String getAutor() {
+        return autor;
     }
 }

@@ -47,7 +47,7 @@ public class LivroController {
         Optional<Livro> livroOptional = livroRepository.findById(id);
         if (livroOptional.isPresent()) {
             Livro livro = livroOptional.get();
-            return ResponseEntity.status(HttpStatus.OK).body(LivroResponseDetalhe.toModel(livro, categoriaRepository, autorRepository));
+            return ResponseEntity.status(HttpStatus.OK).body(new LivroResponseDetalhe(livro));
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
