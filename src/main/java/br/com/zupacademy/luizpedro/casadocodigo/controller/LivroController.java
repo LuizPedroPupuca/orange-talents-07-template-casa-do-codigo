@@ -31,15 +31,16 @@ public class LivroController {
 
     @PostMapping
     @Transactional
-    public void cadastra(@RequestBody @Valid LivroRequest livroRequest) {
+    public ResponseEntity<?> cadastra(@RequestBody @Valid LivroRequest livroRequest) {
         Livro livro = livroRequest.toModel(categoriaRepository, autorRepository);
         livroRepository.save(livro);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping
-    public List<LivroResponseLista> listaLivros() {
+    public ResponseEntity<List<LivroResponseLista>> listaLivros() {
         List<Livro> livros = livroRepository.findAll();
-        return LivroResponseLista.toModel(livros);
+        return ResponseEntity.ok().body(LivroResponseLista.toModel(livros));
     }
 
     @GetMapping("/{id}")
